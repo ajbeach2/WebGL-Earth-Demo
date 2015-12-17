@@ -2,21 +2,50 @@
   "name": "car-demo",
   "version": "1.0.0",
   "description": "car demo of three.js, ecs, and cannon.js",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "mocha --compilers js:babel-register",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --compilers js:babel-register",
+    "build": "browserify --debug src/main.js -o public/app.js -t [ babelify --presets [es2015] ]"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ajbeach2/car-demo.git"
   },
   "keywords": [
-    "three.js"
+    "babel",
+    "three.js",
+    "cannon.js",
+    "ecs"
   ],
   "author": "ajbeach2@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ajbeach2/car-demo/issues"
   },
-  "homepage": "https://github.com/ajbeach2/car-demo"
+  "homepage": "https://github.com/ajbeach2/car-demo",
+  "dependencies": {
+    "express": "^4.13.3",
+    "twit": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel": "^6.3.13",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "istanbul": "^0.4.1",
+    "jshint": "^2.9.1-rc1",
+    "mocha": "^2.3.4"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "jshintConfig": {
+    "esnext": true
+  }
 }
