@@ -1,10 +1,17 @@
-import CANNON from 'cannon';
-import CubeComponent from '../components/cubeComponent'
+import CubeComponent from '../components/cubeComponent';
 
-export function spin(entities){
-  for(let entity of entities){
-    var cube = entity.get(CubeComponent);
-      cube.rotation.x += 0.005;
-      cube.rotation.y += 0.01;
+class PhysicsSystem {
+  constructor(entityManger){
+    this.entityManger = entityManger;
+  }
+
+  process(){
+    var entities = this.entityManger.query(CubeComponent);
+    for(let entity of entities){
+      var cube = entity.get(CubeComponent);
+      cube.rotation.x += .01;
+      cube.rotation.y += .01;
+    }
   }
 }
+export default PhysicsSystem;
