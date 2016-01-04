@@ -1,9 +1,9 @@
-import THREE from 'three.js';
+import THREE from '../../lib/three.js';
 
 class CameraSystem {
 
-  constructor (entityManager){
-    this.entityManager = entityManager;
+  constructor (scene){
+    this.scene = scene;
     this.init();
     this.events();
   }
@@ -16,10 +16,12 @@ class CameraSystem {
   events(){
     var that = this;
     window.addEventListener( 'resize',function(){
+      console.log('here');
       that.camera.aspect = window.innerWidth / window.innerHeight;
+      that.process();
     } , false );
   }
-  
+
   process(){
     this.camera.updateProjectionMatrix();
   }

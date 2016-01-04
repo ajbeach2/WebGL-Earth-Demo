@@ -1,17 +1,19 @@
-import CubeComponent from '../components/cubeComponent';
-
 class PhysicsSystem {
-  constructor(entityManger){
-    this.entityManger = entityManger;
-  }
+  // constructor(scene){
+  //   this.scene = scene;
+  // }
 
-  process(){
-    var entities = this.entityManger.query(CubeComponent);
-    for(let entity of entities){
-      var cube = entity.get(CubeComponent);
-      cube.rotation.x += .01;
-      cube.rotation.y += .01;
-    }
-  }
+  // spin(object3d){
+  //   objectd3.rotation.x += .01
+  //   objectd3.rotation.y += .01
+  // }
+
+  // spinCrates(){
+  //   scene.getChildByName('CrateComponent');
+  // }
+
+  // process(){
+  //   this.scene.
+  // }
 }
 export default PhysicsSystem;

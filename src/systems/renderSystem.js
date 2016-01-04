@@ -1,8 +1,7 @@
-import THREE from 'three.js';
+import THREE from '../../lib/three.js'
 
 class RenderSystem {
-  constructor(entityManager){
-    this.entityManager = entityManager;
+  constructor(){
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( window.innerWidth, window.innerHeight );
