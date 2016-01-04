@@ -1,24 +1,16 @@
-import ScriptComponent from '../components/scriptComponent';
+import ScriptRunner from '../../lib/script';
 
 class ScriptSystem{
-  constructor(scene){
-    this.scene = scene;
-    this.scripts = {};
+  constructor(){
+    this.scriptRunner = new ScriptRunner();
   }
 
-  addScript(context,name,func){
-    if(this.scripts[name] === undefined){
-      this.scripts[name] = new ScriptComponent(context,name,func);
-    }else{
-      throw(`${name} script already exists!`)
-    }
+  addScript(entity,name,func){
+    this.scriptRunner.addScript(entity,name,func);
   }
 
   process(){
-    for (let key in this.scripts){
-      var script = this.scripts[key];
-      script.run();
-    }
+    this.scriptRunner.runAll();
   }
 }
 export default ScriptSystem;

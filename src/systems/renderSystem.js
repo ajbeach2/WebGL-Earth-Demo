@@ -1,7 +1,8 @@
 import THREE from '../../lib/three.js'
 
 class RenderSystem {
-  constructor(){
+  constructor(scene){
+    this.scene = scene;
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -12,10 +13,12 @@ class RenderSystem {
       that.renderer.setSize( window.innerWidth, window.innerHeight );
     }
     window.addEventListener( 'resize', onWindowResize, false );
+
+    this.activeCamera = scene.getObjectByProperty('type', 'PerspectiveCamera');
   }
-  
-  process(scene,camera){
-    this.renderer.render( scene, camera);
+
+  process(){
+    this.renderer.render( this.scene, this.activeCamera);
   }
 }
 export default RenderSystem;

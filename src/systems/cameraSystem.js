@@ -4,26 +4,20 @@ class CameraSystem {
 
   constructor (scene){
     this.scene = scene;
-    this.init();
+    this.activeCamera = scene.getObjectByProperty('type', 'PerspectiveCamera');
     this.events();
-  }
-
-  init(){
-    this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
-    this.camera.position.z = 400;
   }
 
   events(){
     var that = this;
     window.addEventListener( 'resize',function(){
-      console.log('here');
-      that.camera.aspect = window.innerWidth / window.innerHeight;
-      that.process();
+      that.activeCamera.aspect = window.innerWidth / window.innerHeight;
+      that.update();
     } , false );
   }
 
-  process(){
-    this.camera.updateProjectionMatrix();
+  update(){
+    this.activeCamera.updateProjectionMatrix();
   }
 }
 export default CameraSystem;
