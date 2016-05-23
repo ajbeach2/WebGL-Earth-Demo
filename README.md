@@ -10,3 +10,6 @@ npm start
 ```
 
 Navigate to localhost:3000
+
+Live Demo:
+http://ajbeach2.github.io/WebGL-Earth-Demo/public/
